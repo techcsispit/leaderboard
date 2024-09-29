@@ -1,0 +1,183 @@
+/* DO NOT TOUCH THIS FILE */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  transform-style: preserve-3d;
+  font-family: system-ui;
+}
+
+.challenge-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+  background: radial-gradient(#222, #000);
+  display: grid;
+  place-items: center;
+  transform: perspective(500px);
+}
+body > .stage {
+  margin-top: 240px;
+  width: 600px;
+  height: 240px;
+  background: linear-gradient(to bottom, #222, #4f4f4f);
+  transform: rotateX(80deg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 24px;
+  border-bottom: 1px solid black;
+}
+body > .stage::after {
+  content: "Leaderboard";
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, #4f4f4f, #222);
+  transform-origin: top;
+  top: 100%;
+  transform: rotateX(-80deg);
+  display: grid;
+  place-content: center;
+  color: white;
+  font-size: 3.2rem;
+  font-weight: bold;
+}
+body > .stage > .tower {
+  width: 120px;
+  aspect-ratio: 1;
+  position: relative;
+  box-shadow: 0 -2px 24px #000;
+}
+body > .stage > .tower:hover .player {
+  scale: 1.2;
+}
+body > .stage > .tower > .face {
+  position: absolute;
+  width: inherit;
+  background: inherit;
+  bottom: 0;
+}
+body > .stage > .tower > .top {
+  aspect-ratio: inherit;
+  display: grid;
+  place-items: center;
+}
+body > .stage > .tower > .top > .player {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bold;
+  transform: rotateX(-88deg) translateY(-1.6rem);
+  transition: 250ms ease all;
+}
+body > .stage > .tower > .left {
+  transform-origin: left;
+  left: 0;
+  width: 140px;
+  height: 120px;
+  rotate: 0 1 0 -90deg;
+}
+body > .stage > .tower > .right {
+  transform-origin: right;
+  right: 0;
+  height: 120px;
+  width: 100px;
+  rotate: 0 1 0 90deg;
+}
+body > .stage > .tower > .front {
+  transform-origin: bottom;
+  rotate: 1 0 0 90deg;
+  transform: translateY(100%);
+}
+
+body > .stage > .tower.first {
+  transform: translateZ(calc(180px * -1));
+  background: linear-gradient(to top, #74e050, #32bf1f);
+  animation: rise-up-first 2s ease forwards 1s;
+}
+
+body > .stage > .tower.first > .top {
+  transform: translateZ(180px);
+  background: radial-gradient(#9ffc92, #32bf1f);
+}
+
+body > .stage > .tower.first > .front {
+  height: 180px;
+}
+
+body > .stage > .tower.second {
+  transform: translateZ(calc(140px * -1));
+  background: linear-gradient(to top, #ffad50, #ff8b1f);
+  animation: rise-up-second 2s ease forwards 1s;
+}
+
+body > .stage > .tower.second > .top {
+  transform: translateZ(140px);
+  background: radial-gradient(#ffc691, #ff8b1f);
+}
+
+body > .stage > .tower.second > .left {
+  background: linear-gradient(to left, #ffad50, #ff8b1f);
+}
+
+body > .stage > .tower.second > .front {
+  height: 140px;
+}
+
+body > .stage > .tower.third {
+  transform: translateZ(calc(100px * -1));
+  background: linear-gradient(to top, #ff6a50, #ff321f);
+  animation: rise-up-third 2s ease forwards 1s;
+}
+
+body > .stage > .tower.third > .top {
+  transform: translateZ(100px);
+  background: radial-gradient(#ff968c, #ff321f);
+}
+
+body > .stage > .tower.third > .right {
+  background: linear-gradient(to right, #ff6a50, #ff321f);
+}
+
+body > .stage > .tower.third > .front {
+  height: 100px;
+}
+
+@keyframes rise-up-first {
+  from {
+    transform: translateZ(calc(180px * -1));
+  }
+  to {
+    transform: translateZ(0px);
+  }
+}
+
+@keyframes rise-up-second {
+  from {
+    transform: translateZ(calc(140px * -1));
+  }
+  to {
+    transform: translateZ(0px);
+  }
+}
+@keyframes rise-up-third {
+  from {
+    transform: translateZ(calc(100px * -1));
+  }
+  to {
+    transform: translateZ(0px);
+  }
+}
